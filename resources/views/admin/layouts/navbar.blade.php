@@ -9,7 +9,8 @@
 	</ul>
 	<ul class="navbar-nav ml-auto">
 		<li class="nav-item">
-			<a href="#" class="nav-link"><i class="fas fa-power-off nav-icon"></i>&nbsp Keluar</a>
+			<a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-power-off nav-icon"></i>&nbsp Keluar</a>
+			<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
 		</li>
 	</ul>
 </nav>

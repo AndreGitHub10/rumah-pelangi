@@ -23,7 +23,31 @@
         @include('admin.layouts.navbar')
         @include('admin.layouts.sidebar')
         <div class="content-wrapper" style="min-height: 303px;">
-            @yield('content')
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0"><?php echo ucfirst($db_active); ?></h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">
+                                    <a href="#"><?php echo ucfirst($db_active); ?></a>
+                                </li>
+                                <!-- tambah if kondisi -->
+                                <li class="breadcrumb-item active">
+                                    <a><?php echo ucfirst($sub_db_active); ?></a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
     <!-- jQuery -->
@@ -34,5 +58,7 @@
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="{{ asset('js/demo.js') }}"></script> -->
+    <!-- Extended JS -->
+    @yield('js')
 </body>
 </html>
