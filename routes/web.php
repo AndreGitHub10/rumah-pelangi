@@ -15,7 +15,7 @@ use App\Http\Controllers\DataYatimController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.layouts.app');
 });
 
 Auth::routes();
