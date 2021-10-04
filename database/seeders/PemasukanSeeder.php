@@ -6,8 +6,9 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
-class UserSeeder extends Seeder
+class PemasukanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,10 +17,10 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin123')
+        DB::table('pemasukan')->insert([
+            'jumlah_donasi' => '1000000',
+            'id_donatur' => '1',
+            'tanggal_pemberian_donasi' => Carbon::parse('2000-01-01')
         ]);
     }
 }

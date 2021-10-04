@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
-class UserSeeder extends Seeder
+class DonaturSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,10 +16,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin123')
+        DB::table('donatur')->insert([
+            'nama_donatur' => 'makhluk',
+            'alamat' => "kauman, mojosari, mojokerto",
+            'no_hp' => '0888732873287',
+            'total_donasi' => '1000000'
         ]);
     }
 }
