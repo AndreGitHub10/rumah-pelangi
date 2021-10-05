@@ -19,10 +19,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
-    <!-- Data Tables -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <!-- Datatable -->
 
     <!-- <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}"> -->
     @yield('css')
@@ -73,23 +70,6 @@
     <!-- <script src="{{ asset('js/demo.js') }}"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Script Data Tables -->
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-        $.ajaxSetup({
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-        });
-        
-    @if (Session::has('message') && Session::get('status') == 'success')
-        @if (Session::get('status') == 'success')
-        swal("Success","{{Session::get('message')}}","success")
-        @else
-            swal("Success","{{Session::get('message')}}","error")
-        @endif
-    @endif
-    </script>
     @yield('js')
 </body>
 </html>
