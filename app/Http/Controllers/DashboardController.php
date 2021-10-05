@@ -30,7 +30,7 @@ class DashboardController extends Controller
         // $month=date("F",$time);
         // $year=date("Y",strtotime($pemasukan->tanggal_pemberian_donasi));
         // ->where(date("Y",strtotime('tanggal_pemberian_donasi')),'2000')
-        // return $data;
+        // return $data['pemasukan'];
         return view('admin.dashboard.index', $data);
     }
 }
