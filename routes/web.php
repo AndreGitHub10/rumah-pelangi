@@ -46,8 +46,6 @@ Route::prefix('keuangan')->group(function(){
 	});
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Route::group(array('prefix'=>'data_yatim'), function(){
     Route::get('/', [DataYatimController::class, 'index'])->name('data_yatim');

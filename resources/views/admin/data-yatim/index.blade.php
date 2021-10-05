@@ -1,5 +1,9 @@
 @extends('admin.layouts.app')
+
+@section('css')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+@stop
 @section('content')
       <div class="container">
         <div class="row justify-content-center">
@@ -90,3 +94,21 @@
 </script>
 
 @endsection
+
+@section('js')
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+        
+    @if (Session::has('message') && Session::get('status') == 'success')
+        @if (Session::get('status') == 'success')
+        swal("Success","{{Session::get('message')}}","success")
+        @else
+            swal("Success","{{Session::get('message')}}","error")
+        @endif
+    @endif
+    </script>
+@stop
