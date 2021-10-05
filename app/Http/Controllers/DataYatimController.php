@@ -87,8 +87,9 @@ class DataYatimController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $id = $request->id;
         $data = DataYatim::find($id);
         $data->nama_anak = $request->nama_anak;
         $data->alamat = $request->alamat;
@@ -97,7 +98,9 @@ class DataYatimController extends Controller
         $data->no_hp = $request->no_hp;
 
         $data->save();
-        return redirect('data_yatim');
+        if ($data) {
+            return redirect('data_yatim');
+        }
     }
 
     /**

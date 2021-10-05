@@ -12,6 +12,7 @@
                 <div class="card-body">
                   	<div class="form-group">
                     <label for="nama_anak">Nama</label>
+                    <input type="hidden" name="id" value="{{$data_yatim->id}}">
                     <input value="{{ $data_yatim->nama_anak }}" name="nama_anak" type="textarea" class="form-control" id="nama_anak" placeholder="Masukkan Nama">
                   </div>
 
@@ -41,6 +42,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <button class="btn btn-warning" href="{{route('data_yatim')}}">Cancel</button>
                 </div>
               </form>
             </div>
