@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Donatur;
 use Illuminate\Http\Request;
 
 class DonaturController extends Controller
@@ -16,7 +17,7 @@ class DonaturController extends Controller
         $data = array();
         $data['db_active'] = "donatur";
         $data['sub_db_active'] = "";
-        return view('admin.dashboard.index', $data);
+        return view('admin.donatur.index', $data);
     }
 
     /**
@@ -37,7 +38,15 @@ class DonaturController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $donatur = new Donatur();
+        $donatur->nama_donatur = $request->nama_donatur;
+        $donatur->no_hp = $request->no_hp;
+        $donatur->alamat = $request->alamat;
+        $donatur->total_donasi = $request->total_donasi;
+
+        $donatur->save();
+
+        return redirect()->back();
     }
 
     /**

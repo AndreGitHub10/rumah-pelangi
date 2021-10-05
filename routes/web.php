@@ -32,7 +32,10 @@ Route::prefix('/')->group(function(){
 
 Route::prefix('donatur')->group(function(){
 	Route::get('/', [DonaturController::class, 'index'])->name('donatur');
+	Route::post('/', [DonaturController::class, 'store'])->name('donaturStore');
 });
+
+
 
 Route::prefix('keuangan')->group(function(){
 	Route::prefix('pemasukan')->group(function(){
