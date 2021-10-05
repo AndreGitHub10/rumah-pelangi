@@ -39,13 +39,8 @@
 					</ul>
 				</li>
 				<li class="nav-item">
-<<<<<<< HEAD
-					<a href="{{route('data_yatim')}}" class="nav-link">
-						<i class="nav-icon fas fa-tachometer-alt"></i>
-=======
-					<a href="#" class="nav-link <?php if($db_active == "data_yatim"){ echo "active"; } ?>">
+					<a href="{{ route('data_yatim')}}" class="nav-link <?php if($db_active == "data_yatim"){ echo "active"; } ?>">
 						<i class="nav-icon fas fa-users"></i>
->>>>>>> 8431c9c1cf86f799d9c6e741442d82e40b71885c
 						<p>Data Yatim Piatu</p>
 					</a>
 				</li>

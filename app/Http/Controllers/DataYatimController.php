@@ -17,6 +17,8 @@ class DataYatimController extends Controller
     {
 
         $data = array();
+        $data['db_active'] = "data_yatim";
+        $data['sub_db_active'] = "";
         $data['data_yatim'] = DataYatim::all();
         return view('data-yatim.index', $data);
     }
@@ -28,6 +30,8 @@ class DataYatimController extends Controller
     public function create()
     {
         $data = array();
+        $data['db_active'] = "data_yatim";
+        $data['sub_db_active'] = "";
         return view('data-yatim.create', $data);
     }
 

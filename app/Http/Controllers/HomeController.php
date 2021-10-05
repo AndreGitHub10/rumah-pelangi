@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
+        $data['db_active'] = "donatur";
+        $data['sub_db_active'] = "";
+        return view('admin.dashboard.index', $data);
     }
 }
