@@ -39,7 +39,7 @@
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a href="#" class="nav-link <?php if($db_active == "data_yatim"){ echo "active"; } ?>">
+					<a href="{{ route('data_yatim')}}" class="nav-link <?php if($db_active == "data_yatim"){ echo "active"; } ?>">
 						<i class="nav-icon fas fa-users"></i>
 						<p>Data Yatim Piatu</p>
 					</a>

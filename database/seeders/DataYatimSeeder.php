@@ -18,9 +18,9 @@ class DataYatimSeeder extends Seeder
     public function run()
     {
         DB::table('data_yatim')->insert([
-            'nama_anak' => 'sifulan',
-            'alamat' => "kauman, mojosari, mojokerto",
-            'tempat_lahir' => 'mojokerto',
+            'nama_anak' => 'Sifulan',
+            'alamat' => "Kauman, mojosari, mojokerto",
+            'tempat_lahir' => 'Mojokerto',
             'tanggal_lahir' => Carbon::parse('2000-01-01'),
             'no_hp' => '0888732873287'
         ]);
