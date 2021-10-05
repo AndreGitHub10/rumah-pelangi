@@ -19,19 +19,48 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+<<<<<<< HEAD
 
     <!-- Data Tables -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
   
+=======
+    <!-- <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}"> -->
+    @yield('css')
+>>>>>>> 8431c9c1cf86f799d9c6e741442d82e40b71885c
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         @include('admin.layouts.navbar')
         @include('admin.layouts.sidebar')
         <div class="content-wrapper" style="min-height: 303px;">
-            @yield('content')
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0"><?php echo ucfirst($db_active); ?></h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item">
+                                    <a href="#"><?php echo ucfirst($db_active); ?></a>
+                                </li>
+                                <!-- tambah if kondisi -->
+                                <li class="breadcrumb-item active">
+                                    <a><?php echo ucfirst($sub_db_active); ?></a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
     <!-- jQuery -->
@@ -41,8 +70,11 @@
     <!-- <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.min.js') }}"></script>
+    <!-- <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script> -->
     <!-- AdminLTE for demo purposes -->
     <!-- <script src="{{ asset('js/demo.js') }}"></script> -->
+<<<<<<< HEAD
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Script Data Tables -->
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
@@ -62,6 +94,9 @@
         @endif
     @endif
     </script>
+=======
+    <!-- Extended JS -->
+>>>>>>> 8431c9c1cf86f799d9c6e741442d82e40b71885c
     @yield('js')
 </body>
 </html>

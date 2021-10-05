@@ -96,6 +96,7 @@
             @yield('content')
         </main>
     </div>
+<<<<<<< HEAD
     <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0-rc
@@ -119,6 +120,8 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+=======
+>>>>>>> 8431c9c1cf86f799d9c6e741442d82e40b71885c
 
 </body>
 </html>

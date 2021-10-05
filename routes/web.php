@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\PemasukanController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\DataYatimController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +20,28 @@ use App\Http\Controllers\DataYatimController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layouts.app');
-});
+// Route::get('/', function () {
+//     return view('admin.layouts.app');
+// });
 
 Auth::routes();
+Route::prefix('/')->group(function(){
+	Route::get('/', [DashboardController::class, 'index'])->name('home');
+});
+
+
+Route::prefix('donatur')->group(function(){
+	Route::get('/', [DonaturController::class, 'index'])->name('donatur');
+});
+
+Route::prefix('keuangan')->group(function(){
+	Route::prefix('pemasukan')->group(function(){
+		Route::get('/', [PemasukanController::class, 'index'])->name('pemasukan');
+	});
+	Route::prefix('pengeluaran')->group(function(){
+		Route::get('/', [PengeluaranController::class, 'index'])->name('pengeluaran');
+	});
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -32,3 +55,4 @@ Route::group(array('prefix'=>'data_yatim'), function(){
     Route::post('/{edit}/{id}',  [DataYatimController::class, 'create'])->name('data_yatimEdit');
 
   });
+
