@@ -53,7 +53,7 @@
 			<div class="card-header border-0">
 				<div class="d-flex justify-content-between">
 					<h3 class="card-title">Pemasukan bulan ini</h3>
-					<a href="javascript:void(0);">Lihat detail</a>
+					<a href="{{ route('pemasukan') }}">Lihat detail</a>
 				</div>
 			</div>
 			<div class="card-body">
@@ -76,7 +76,7 @@
 			<div class="card-header border-0">
 				<div class="d-flex justify-content-between">
 					<h3 class="card-title">Pengeluaran bulan ini</h3>
-					<a href="javascript:void(0);">Lihat detail</a>
+					<a href="{{ route('pengeluaran') }}">Lihat detail</a>
 				</div>
 			</div>
 			<div class="card-body">
