@@ -25,7 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(array('prefix'=>'data_yatim'), function(){
     Route::get('/', [DataYatimController::class, 'index'])->name('data_yatim');
-    Route::post('/create',[DataYatimController::class, 'create'])->name('data_yatimCreate');
+    Route::get('/create',[DataYatimController::class, 'create'])->name('data_yatimCreate');
     Route::post('/store', [DataYatimController::class, 'store'])->name('data_yatimStore');
     Route::post('/show', [DataYatimController::class, 'show'])->name('data_yatimShow');
     Route::post('/destroy', [DataYatimController::class, 'destroy'])->name('data_yatimDestroy');

@@ -17,7 +17,6 @@ class DataYatimController extends Controller
     {
 
         $data = array();
-        $data['data_yatim2'] = DB::table('data_yatim')->paginate(2);
         $data['data_yatim'] = DataYatim::all();
         return view('data-yatim.index', $data);
     }
@@ -28,7 +27,8 @@ class DataYatimController extends Controller
      */
     public function create()
     {
-        //
+        $data = array();
+        return view('data-yatim.create', $data);
     }
 
     /**
@@ -39,7 +39,15 @@ class DataYatimController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new DataYatim;
+        $data->nama_anak = $request->nama_anak;
+        $data->alamat = $request->alamat;
+        $data->tempat_lahir = $request->tempat_lahir;
+        $data->tanggal_lahir = $request->tanggal_lahir;
+        $data->no_hp = $request->no_hp;
+
+        $data->save();
+        return redirect('data_yatim');
     }
 
     /**
@@ -82,8 +90,20 @@ class DataYatimController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $data_yatim = DataYatim::where('id', $request->id)->first();
+
+        if (!empty($data_yatim)) {
+            
+            $data_yatim->delete();
+
+            $return = ['status'=>'success','code'=>200,'message'=>'Berhasil Menghapus Data'];
+        } else {
+            $return = ['status'=>'error','code'=>250,'message'=>'Gagal Menghapus Data'];
+        }
+
+        return $return;
     }
 }
+
