@@ -9,7 +9,7 @@
 	<div class="col-lg-3 col-6">
 		<div class="small-box bg-success">
 			<div class="inner">
-				<h3>150</h3>
+				<h3><?php echo count($pemasukan); ?></h3>
 				<p>Data Yatim</p>
 			</div>
 			<div class="icon">
