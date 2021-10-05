@@ -20,7 +20,7 @@ class DataYatimController extends Controller
         $data['db_active'] = "data_yatim";
         $data['sub_db_active'] = "";
         $data['data_yatim'] = DataYatim::all();
-        return view('data-yatim.index', $data);
+        return view('admin.data-yatim.index', $data);
     }
     /**
      * Show the form for creating a new resource.
@@ -32,7 +32,7 @@ class DataYatimController extends Controller
         $data = array();
         $data['db_active'] = "data_yatim";
         $data['sub_db_active'] = "";
-        return view('data-yatim.create', $data);
+        return view('admin.data-yatim.create', $data);
     }
 
     /**
@@ -73,7 +73,11 @@ class DataYatimController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = array();
+        $data['db_active'] = "data_yatim";
+        $data['sub_db_active'] = "";
+        $data['data_yatim'] = DataYatim::find($id);
+        return view('admin.data-yatim.update', $data);
     }
 
     /**
@@ -85,7 +89,15 @@ class DataYatimController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = DataYatim::find($id);
+        $data->nama_anak = $request->nama_anak;
+        $data->alamat = $request->alamat;
+        $data->tempat_lahir = $request->tempat_lahir;
+        $data->tanggal_lahir = $request->tanggal_lahir;
+        $data->no_hp = $request->no_hp;
+
+        $data->save();
+        return redirect('data_yatim');
     }
 
     /**
