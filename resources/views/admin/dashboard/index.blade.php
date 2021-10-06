@@ -9,7 +9,7 @@
 	<div class="col-lg-3 col-6">
 		<div class="small-box bg-success">
 			<div class="inner">
-				<h3><?php echo count($pemasukan); ?></h3>
+				<h3>{{ $jumlah_data_yatim }}</h3>
 				<p>Data Yatim</p>
 			</div>
 			<div class="icon">
@@ -23,7 +23,7 @@
 	<div class="col-lg-3 col-6">
 		<div class="small-box bg-danger">
 			<div class="inner">
-				<h3>50</h3>
+				<h3>{{ $jumlah_donatur }}</h3>
 				<p>Donatur</p>
 			</div>
 			<div class="icon">

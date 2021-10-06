@@ -18,7 +18,8 @@ class DashboardController extends Controller
         $data = array();
         $data['db_active'] = "dashboard";
         $data['sub_db_active'] = "";
-        $data['pemasukan'] = DB::table('pemasukan')->get();
+        $data['jumlah_data_yatim'] = count(DB::table('data_yatim')->get());
+        $data['jumlah_donatur'] = count(DB::table('donatur')->get());
         // $data['hari'] = CarbonInterval::month()->totalDayz;
         // $kk = date("Y",strtotime($pem->tanggal_pemberian_donasi));
         // $tahun = '2000';
