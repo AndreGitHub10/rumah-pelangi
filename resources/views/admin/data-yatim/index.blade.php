@@ -44,7 +44,8 @@
                       <td>{{ $dt->no_hp}}</td>
                       <td>
                         <a href="{{  route('data_yatimEdit', $dt->id) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
-                        <a href="javascript:void(0)" onclick="hapus_yatim(`{{$dt->id}}`)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="{{ route('data_yatimShow', $dt->id)}}" class="btn btn-info"><i class="fa fa-folder">&nbsp;</i></a> 
+                        <a href="javascript:void(0)" onclick="hapus_yatim(`{{$dt->id}}`)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </tr>
                      @endforeach
                    

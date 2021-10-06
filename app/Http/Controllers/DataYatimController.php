@@ -62,7 +62,11 @@ class DataYatimController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['db_active'] = "data_yatim";
+        $data['sub_db_active'] = "";
+        $data['data_yatim'] = DataYatim::where('id', $id)->first();
+
+        return view('admin.data-yatim.show', $data);
     }
 
     /**
