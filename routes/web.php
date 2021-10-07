@@ -32,7 +32,12 @@ Route::prefix('/')->group(function(){
 
 Route::prefix('donatur')->group(function(){
 	Route::get('/', [DonaturController::class, 'index'])->name('donatur');
-	Route::post('/', [DonaturController::class, 'store'])->name('donaturStore');
+	Route::post('/store', [DonaturController::class, 'store'])->name('donaturStore');
+	Route::get('/create', [DonaturController::class, 'create'])->name('donaturCreate');
+	Route::post('/destroy', [DonaturController::class, 'destroy'])->name('data_donaturDestroy');
+	Route::get('/edit/{id}', [DonaturController::class, 'edit'])->name('data_donaturEdit');
+	Route::get('/show/{id}', [DonaturController::class, 'show'])->name('data_donaturShow');
+	Route::post('/update', [DonaturController::class, 'update'])->name('data_donaturUpdate');
 });
 
 
