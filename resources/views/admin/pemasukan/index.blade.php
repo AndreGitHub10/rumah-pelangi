@@ -25,6 +25,7 @@
                   <thead>
                     <tr>
                       <th>ID</th>
+                    
                       <th>Jumlah Donasi</th>
                       <th>Tanggal Pemberian Donasi</th>
                       <th>Aksi</th>
@@ -34,6 +35,7 @@
                     @foreach($pemasukan as $dt)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
+                     
                       <td>{{ $dt->jumlah_donasi }}</td>
                       <td>{{ $dt->tanggal_pemberian_donasi}}</td>
                       <td>

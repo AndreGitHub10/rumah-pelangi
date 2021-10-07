@@ -32,7 +32,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <button class="btn btn-warning" href="{{route('donatur', $donatur)}}">Cancel</button>
+                  <button class="btn btn-warning"><a href="{{route('donatur')}}">Cancel</a></button>
                 </div>
               </form>
             </div>

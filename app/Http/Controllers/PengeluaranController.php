@@ -45,6 +45,19 @@ class PengeluaranController extends Controller
      */
     public function store(Request $request)
     {
+        $pesan = [
+            'required' => ':Attribute Wajib Diisi !',
+            'min' => ':Attribute harus diisi minimal :min karakter !',
+            'max' => ':Attribute harus diisi maksimal :max karakter !',
+            'numeric' => ':Attribute harus diisi angka !',
+        ];
+        
+        $this->validate($request,[
+            'jumlah_pengeluaran' => 'required|min:5',
+            'tanggal_pengeluaran' => 'required',
+            'keterangan' => 'required',
+        ],$pesan);
+
         $data = new Pengeluaran;
         $data->jumlah_pengeluaran = $request->jumlah_pengeluaran;
         $data->tanggal_pengeluaran = $request->tanggal_pengeluaran;
@@ -52,7 +65,7 @@ class PengeluaranController extends Controller
             
         $data->save();
 
-        return redirect('keuangan/pengeluaran');
+        return redirect('keuangan/pengeluaran')->with('success', 'Data Pengeluaran Berhasil!');
     }
 
     /**
@@ -98,7 +111,7 @@ class PengeluaranController extends Controller
             
         $data->save();
 
-        return redirect('keuangan/pengeluaran');
+        return redirect('keuangan/pengeluaran')->with('success', 'Update Data Berhasil Dirubah!');
     }
 
     /**

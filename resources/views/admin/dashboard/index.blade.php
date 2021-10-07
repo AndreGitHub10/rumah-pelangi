@@ -43,7 +43,7 @@
 			<div class="icon">
 				<i class="fas fa-money-bill-wave"></i>
 			</div>
-			<a href="#" class="small-box-footer">
+			<a href="{{ route('pemasukan')}}" class="small-box-footer">
 			More info <i class="fas fa-arrow-circle-right"></i>
 			</a>
 		</div>

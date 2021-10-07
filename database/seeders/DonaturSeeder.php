@@ -17,8 +17,8 @@ class DonaturSeeder extends Seeder
     public function run()
     {
         DB::table('donatur')->insert([
-            'nama_donatur' => 'makhluk',
-            'alamat' => "kauman, mojosari, mojokerto",
+            'nama_donatur' => 'Retnaldi',
+            'alamat' => "Ketapanrame, Trawas, Mojokerto",
             'no_hp' => '0888732873287',
         ]);
     }

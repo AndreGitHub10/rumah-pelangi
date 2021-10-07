@@ -19,7 +19,7 @@ class DataYatimSeeder extends Seeder
     {
         DB::table('data_yatim')->insert([
             'nama_anak' => 'Sifulan',
-            'alamat' => "Kauman, mojosari, mojokerto",
+            'alamat' => "Kauman, Mojosari, Mojokerto",
             'tempat_lahir' => 'Mojokerto',
             'tanggal_lahir' => Carbon::parse('2000-01-01'),
             'no_hp' => '0888732873287'

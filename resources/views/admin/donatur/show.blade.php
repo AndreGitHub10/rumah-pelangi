@@ -26,9 +26,7 @@
 	                    <input disabled value="{{ $donatur->alamat }}" name="alamat" type="textarea" class="form-control" id="alamat" placeholder="Masukkan Alamat">
 	              </div>
 
-	              
-	              	
-                  <button class="btn btn-warning"><a href="{{route('donatur')}}">Cancel</a></button>
+                 <button class="btn btn-warning"><a href="{{route('donatur')}}">Cancel</a></button>
                 
                   
                 </div>

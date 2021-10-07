@@ -119,7 +119,7 @@ class DataYatimController extends Controller
 
         $data->save();
         if ($data) {
-            return redirect('data_yatim')->with('success', 'Update Data Berhasil Dirubah!');;
+            return redirect('data_yatim')->with('success', 'Update Data Berhasil Dirubah!');
         }
     }
 

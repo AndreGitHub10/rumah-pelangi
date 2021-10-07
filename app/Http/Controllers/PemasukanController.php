@@ -20,6 +20,7 @@ class PemasukanController extends Controller
         $data['db_active'] = "keuangan";
         $data['sub_db_active'] = "pemasukan";
         $data['pemasukan'] = Pemasukan::all();
+        $data['donatur'] = Donatur::all();
         return view('admin.pemasukan.index', $data);
     }
 
@@ -70,7 +71,7 @@ class PemasukanController extends Controller
         $data->save();
 
         
-        return redirect('keuangan/pemasukan');
+        return redirect('keuangan/pemasukan')->with('success', 'Donasi Donatur Berhasil Dimasukkan!');
     }
 
     /**
@@ -115,7 +116,7 @@ class PemasukanController extends Controller
 
         $data->save();
         if ($data) {
-            return redirect('keuangan/pemasukan');
+            return redirect('keuangan/pemasukan')->with('success', 'Update Data Berhasil Dirubah!');
         }
     }
 

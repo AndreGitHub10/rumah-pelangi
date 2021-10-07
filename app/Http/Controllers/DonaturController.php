@@ -44,6 +44,20 @@ class DonaturController extends Controller
      */
     public function store(Request $request)
     {
+        $pesan = [
+            'required' => ':Attribute Wajib Diisi !',
+            'min' => ':attribute harus diisi minimal :min karakter !',
+            'max' => ':attribute harus diisi maksimal :max karakter !',
+            'numeric' => ':attribute harus diisi angka !',
+        ];
+        
+        $this->validate($request,[
+            'nama_donatur' => 'required',
+            'alamat' => 'required',
+            'no_hp' => 'required',
+            
+        ],$pesan);
+
         $data = new Donatur();
         $data->nama_donatur = $request->nama_donatur;
         $data->no_hp = $request->no_hp;
@@ -51,7 +65,7 @@ class DonaturController extends Controller
 
         $data->save();
 
-        return redirect('donatur');
+        return redirect('donatur')->with('success', 'Data Donatur Berhasil Dimasukkan!');
     }
 
     /**
@@ -65,7 +79,6 @@ class DonaturController extends Controller
         $data['db_active'] = "donatur";
         $data['sub_db_active'] = "";
         $data['donatur'] = Donatur::where('id_donatur', $id_donatur)->first();
-
         return view('admin.donatur.show', $data);
     }
 
@@ -101,7 +114,7 @@ class DonaturController extends Controller
 
         $data->save();
         if ($data) {
-            return redirect('donatur');
+            return redirect('donatur')->with('success', 'Update Data Berhasil Dirubah!');
         }
     }
 

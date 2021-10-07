@@ -32,7 +32,7 @@
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <button class="btn btn-warning" href="{{route('data_yatim')}}">Cancel</button>
+                  <button class="btn btn-warning"><a  href="{{route('pengeluaran')}}">Cancel</a></button>
                 </div>
               </form>
             </div>
