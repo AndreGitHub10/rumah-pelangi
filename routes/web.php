@@ -51,10 +51,17 @@ Route::prefix('keuangan')->group(function(){
 	    Route::post('/update', [PemasukanController::class, 'update'])->name('pemasukanUpdate');
 	    Route::post('/destroy', [PemasukanController::class, 'destroy'])->name('pemasukanDestroy');
 	    Route::get('/edit/{id}',  [PemasukanController::class, 'edit'])->name('pemasukanEdit');
+	    Route::post('/getDataDonatur', [PemasukanController::class, 'getDataDonatur'])->name('getDataDonatur');
 	});
 
 	Route::prefix('pengeluaran')->group(function(){
 		Route::get('/', [PengeluaranController::class, 'index'])->name('pengeluaran');
+		Route::get('/create',[PengeluaranController::class, 'create'])->name('pengeluaranCreate');
+	    Route::post('/store', [PengeluaranController::class, 'store'])->name('pengeluaranStore');
+	    Route::get('/show/{id}', [PengeluaranController::class, 'show'])->name('pengeluaranShow');
+	    Route::post('/update', [PengeluaranController::class, 'update'])->name('pengeluaranUpdate');
+	    Route::post('/destroy', [PengeluaranController::class, 'destroy'])->name('pengeluaranDestroy');
+	    Route::get('/edit/{id}',  [PengeluaranController::class, 'edit'])->name('pengeluaranEdit');
 	});
 });
 
@@ -67,6 +74,6 @@ Route::group(array('prefix'=>'data_yatim'), function(){
     Route::post('/update', [DataYatimController::class, 'update'])->name('data_yatimUpdate');
     Route::post('/destroy', [DataYatimController::class, 'destroy'])->name('data_yatimDestroy');
     Route::get('/edit/{id}',  [DataYatimController::class, 'edit'])->name('data_yatimEdit');
-
+    Route::post('/proses', [DataYatimController::class, 'proses'])->name('data_yatimProses');
   });
 

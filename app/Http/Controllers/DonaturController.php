@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donatur;
+use App\Models\Pemasukan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,7 +48,6 @@ class DonaturController extends Controller
         $data->nama_donatur = $request->nama_donatur;
         $data->no_hp = $request->no_hp;
         $data->alamat = $request->alamat;
-        $data->total_donasi = $request->total_donasi;
 
         $data->save();
 
@@ -98,7 +98,6 @@ class DonaturController extends Controller
         $data->nama_donatur = $request->nama_donatur;
         $data->no_hp = $request->no_hp;
         $data->alamat = $request->alamat;
-        $data->total_donasi = $request->total_donasi;
 
         $data->save();
         if ($data) {

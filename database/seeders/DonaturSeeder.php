@@ -20,7 +20,6 @@ class DonaturSeeder extends Seeder
             'nama_donatur' => 'makhluk',
             'alamat' => "kauman, mojosari, mojokerto",
             'no_hp' => '0888732873287',
-            'total_donasi' => '1000000'
         ]);
     }
 }

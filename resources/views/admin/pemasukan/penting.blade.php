@@ -1,3 +1,25 @@
+$("select[name='selection']").change(function() {
+     var selected = $(this).find("option:selected").text();
+     $("input[name='hid']").val(selected);
+     if (selected == "0") 
+          $("input[name='hid']").attr("type", "text");
+     else
+          $("input[name='hid']").attr("type", "hidden");
+});
+
+function myFunction() {
+  var cek = id;
+  if(id != null || ""){
+  var nama = "Opex";
+  var kontak = "000000";
+  var alamat = "sini";
+  var donatur_id = "1";
+  $('#myText').val(nama);
+  }else{
+  
+  }
+}
+
 @extends('admin.layouts.app')
 
 @section('css')
@@ -10,7 +32,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('pemasukanCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Pemasukan Donatur</a>
+                <a href="{{ route('donaturCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Donatur</a>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -19,34 +41,36 @@
                   </div>
                 </div>
               </div>
-              <!-- /.card-header -->
+              <!--.card-header -->
               <div class="card-body table-responsive p-2">
                 <table id="example" class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Jumlah Donasi</th>
-                      <th>Tanggal Pemberian Donasi</th>
-                      <th>Aksi</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>No. Telp</th>
                     </tr>
                   </thead>
                    <tbody>
-                    @foreach($pemasukan as $dt)
+                    @foreach($donatur as $dc)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $dt->jumlah_donasi }}</td>
-                      <td>{{ $dt->tanggal_pemberian_donasi}}</td>
+                      <td>{{ $dc->nama_donatur }}</td>
+                      <td><div class="col-2 text-truncate" style="max-width: 150px;">{{ $dc->alamat }}</div></td>
+                      <td>{{ $dc->no_hp}}</td>
                       <td>
-                        <a href="{{  route('pemasukanEdit', $dt->id) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
-                        <a href="javascript:void(0)" onclick="hapus_pemasukan(`{{$dt->id}}`)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                          
+                        <a href="{{ route('data_donaturEdit', $dc->id_donatur) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
+                        <a href="{{ route('data_donaturShow', $dc->id_donatur) }}" class="btn btn-info"><i class="fa fa-folder">&nbsp;</i></a> 
+                        <a href="javascript:void(0)" onclick="hapus_donatur(`{{$dc->id_donatur}}`)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
+                      </td>
                     </tr>
                      @endforeach
                    
                   </tbody>
-                  
+
                 </table>
                  <br>
-                 
                 </br>
               </div>
               <!-- /.card-body -->
@@ -61,7 +85,7 @@
     $('#example').DataTable();
 } );
 
- function hapus_pemasukan(id) {
+ function hapus_donatur(id_donatur) {
       swal({
         title: "Apakah anda Yakin?",
         text: "Ingin Menghapus Data ini" ,
@@ -73,7 +97,7 @@
         dangerMode: true,
       }).then(function(isConfirm) {
         if (isConfirm) {
-          $.post("{{route('pemasukanDestroy')}}", {id:id}).done((data) => {
+          $.post("{{route('data_donaturDestroy')}}", {id_donatur:id_donatur}).done((data) => {
             if (data.status == 'success') {
               swal('Berhasil',data.message,'success');
               window.location.reload()

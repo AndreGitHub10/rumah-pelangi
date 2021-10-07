@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengeluaran;
+use App\Models\Donatur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PengeluaranController extends Controller
 {
@@ -16,7 +19,8 @@ class PengeluaranController extends Controller
         $data = array();
         $data['db_active'] = "keuangan";
         $data['sub_db_active'] = "pengeluaran";
-        return view('admin.dashboard.index', $data);
+        $data['pengeluaran'] = Pengeluaran::all();
+        return view('admin.pengeluaran.index', $data);
     }
 
     /**
@@ -26,7 +30,11 @@ class PengeluaranController extends Controller
      */
     public function create()
     {
-        //
+        $data = array();
+        $data['db_active'] = "keuangan";
+        $data['sub_db_active'] = "pengeluaran";
+        $data['pengeluaran'] = Pengeluaran::all();
+        return view('admin.pengeluaran.create', $data);
     }
 
     /**
@@ -37,7 +45,14 @@ class PengeluaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Pengeluaran;
+        $data->jumlah_pengeluaran = $request->jumlah_pengeluaran;
+        $data->tanggal_pengeluaran = $request->tanggal_pengeluaran;
+        $data->keterangan = $request->keterangan;
+            
+        $data->save();
+
+        return redirect('keuangan/pengeluaran');
     }
 
     /**
@@ -59,7 +74,11 @@ class PengeluaranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = array();
+        $data['db_active'] = "keuangan";
+        $data['sub_db_active'] = "pengeluaran";
+        $data['pengeluaran'] = Pengeluaran::find($id);
+        return view('admin.pengeluaran.update', $data);
     }
 
     /**
@@ -69,9 +88,17 @@ class PengeluaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+        $data = Pengeluaran::find($id);
+        $data->jumlah_pengeluaran = $request->jumlah_pengeluaran;
+        $data->tanggal_pengeluaran = $request->tanggal_pengeluaran;
+        $data->keterangan = $request->keterangan;
+            
+        $data->save();
+
+        return redirect('keuangan/pengeluaran');
     }
 
     /**
@@ -80,8 +107,19 @@ class PengeluaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $pengeluaran = Pengeluaran::where('id', $request->id)->first();
+
+        if (!empty($pengeluaran)) {
+            
+            $pengeluaran->delete();
+
+            $return = ['status'=>'success','code'=>200,'message'=>'Berhasil Menghapus Data'];
+        } else {
+            $return = ['status'=>'error','code'=>250,'message'=>'Gagal Menghapus Data'];
+        }
+
+        return $return;
     }
 }

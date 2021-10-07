@@ -33,6 +33,7 @@ class PemasukanController extends Controller
         $data = array();
         $data['db_active'] = "keuangan";
         $data['sub_db_active'] = "pemasukan";
+        $data['donatur'] = Donatur::all();
         return view('admin.pemasukan.create', $data);
     }
 
@@ -44,22 +45,32 @@ class PemasukanController extends Controller
      */
     public function store(Request $request)
     {
+         // return $request->all();
+        // if(!Donatur::where('nama_donatur', $request->nama_donatur)){
+        //     $donatur = new Donatur;
+        //     $donatur->nama_donatur = $request->nama_donatur;
+        //     $donatur->alamat = $request->alamat;
+        //     $donatur->no_hp = $request->no_hp;
 
-        if(!Donatur::where('nama_donatur', $request->nama_donatur)){
-            $donatur = new Donatur;
-            $donatur->nama_donatur = $request->nama_donatur;
-            $donatur->alamat = $request->alamat;
-            $donatur->no_hp = $request->no_hp;
-
-            $donatur->save();
+        //     $donatur->save();
+        // }
+        $id_donatur = $request->id_donatur;
+        if (!is_numeric($request->id_donatur)) {
+            $id_donatur = Donatur::create([
+                'nama_donatur' => $id_donatur,
+                'alamat' => $request->alamat,
+                'no_hp' => $request->no_hp
+            ])->id_donatur;            
         }
         
         $data = new Pemasukan;
         $data->jumlah_donasi = $request->jumlah_donasi;
+        $data->id_donatur = $id_donatur;
         $data->tanggal_pemberian_donasi = $request->tanggal_pemberian_donasi;
-
         $data->save();
-        return redirect('pemasukan');
+
+        
+        return redirect('keuangan/pemasukan');
     }
 
     /**
@@ -129,4 +140,17 @@ class PemasukanController extends Controller
 
         return $return;
     }
+
+    public function getDataDonatur(Request $request)
+  {
+    // return $request->all();
+    $id_donatur = $request->id_donatur;
+    $data = Donatur::where('id_donatur', $request->id_donatur)->first();
+    if (!empty($data)) {
+      $return = ['status' => 'success', 'message' => 'Berkas Anda Ditemukan !!', 'data'=>$data];
+    }else{
+      $return = ['status' => 'error', 'message' => 'Berkas Anda Tidak Ditemukan !!', 'data'=>''];
+    }
+    return $return;
+  }
 }

@@ -18,7 +18,6 @@ class CreateDonaturTable extends Migration
             $table->string('nama_donatur');
             $table->string('alamat');
             $table->string('no_hp');
-            $table->string('total_donasi');
             $table->timestamps();
         });
     }

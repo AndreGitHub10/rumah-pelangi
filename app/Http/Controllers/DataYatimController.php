@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataYatim;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,30 +44,31 @@ class DataYatimController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
-            'nama_anak' => 'required',
-            'alamat' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-        );
-        $messages = array(
-            'required' => 'Kolom harus diisi!',
-        );
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if(!$validator->fails()){
-            $data = new DataYatim;
-            $data->nama_anak = $request->nama_anak;
-            $data->alamat = $request->alamat;
-            $data->tempat_lahir = $request->tempat_lahir;
-            $data->tanggal_lahir = $request->tanggal_lahir;
-            $data->no_hp = $request->no_hp;
+            $rules = array(
+                'nama_anak' => 'required',
+                'alamat' => 'required',
+                'tempat_lahir' => 'required',
+                'tanggal_lahir' => 'required',
+            );
+            $messages = array(
+                'required' => 'Kolom harus diisi!',
+            );
+            $validator = Validator::make($request->all(), $rules, $messages);
+            if(!$validator->fails()){
+                $data = new DataYatim;
+                $data->nama_anak = $request->nama_anak;
+                $data->alamat = $request->alamat;
+                $data->tempat_lahir = $request->tempat_lahir;
+                $data->tanggal_lahir = $request->tanggal_lahir;
+                $data->no_hp = $request->no_hp;
 
-            $data->save();
-       
-        if ($data) {
-            return redirect('data_yatim')->with('success', 'Data Yatim Berhasil Dimasukkan!');
-        } 
-    }}
+                $data->save();
+           
+            if ($data) {
+                return redirect('data_yatim')->with('success', 'Data Yatim Berhasil Dimasukkan!');
+            } 
+        }
+    }
 
     /**
      * Display the specified resource.
@@ -141,6 +143,34 @@ class DataYatimController extends Controller
         }
 
         return $return;
+    }
+
+    public function proses(Request $request)
+    {
+        $pesan = [
+            'required' => ':Attribute Wajib Diisi !',
+            'min' => ':attribute harus diisi minimal :min karakter !',
+            'max' => ':attribute harus diisi maksimal :max karakter !',
+            'numeric' => ':attribute harus diisi angka !',
+        ];
+        
+        $this->validate($request,[
+            'nama_anak' => 'required',
+            'alamat' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+        ],$pesan);
+
+        $data = new DataYatim;
+                $data->nama_anak = $request->nama_anak;
+                $data->alamat = $request->alamat;
+                $data->tempat_lahir = $request->tempat_lahir;
+                $data->tanggal_lahir = $request->tanggal_lahir;
+                $data->no_hp = $request->no_hp;
+
+                $data->save();
+
+        return redirect('data_yatim')->with('success', 'Data Yatim Berhasil Dimasukkan!');
     }
 }
 

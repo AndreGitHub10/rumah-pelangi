@@ -19,7 +19,7 @@ class CreateDataYatimTable extends Migration
             $table->string('alamat');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->string('no_hp');
+            $table->string('no_hp')->nullable();
             $table->timestamps();
         });
     }

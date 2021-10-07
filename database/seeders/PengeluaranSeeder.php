@@ -17,10 +17,6 @@ class PengeluaranSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pengeluaran')->insert([
-            'jumlah_pengeluaran' => '500000',
-            'tanggal_pengeluaran' => Carbon::parse('2000-01-01'),
-            'keterangan' => 'untuk membeli kasur'
-        ]);
+        //
     }
 }

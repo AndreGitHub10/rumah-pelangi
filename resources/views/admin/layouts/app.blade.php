@@ -22,7 +22,21 @@
     <!-- Datatable -->
 
     <!-- <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}"> -->
-    @yield('css')
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style type="text/css">
+      .select2-selection__rendered {
+          line-height: 31px !important;
+      }
+      .select2-container .select2-selection--single {
+          height: 43px !important;
+      }
+      .select2-selection__arrow {
+          height: 34px !important;
+      }
+    </style>
+
+    @yield('css')    
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
@@ -71,6 +85,12 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Script Data Tables -->
     @yield('js')
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+    </script>
     @include('sweetalert::alert')
 </body>
 </html>

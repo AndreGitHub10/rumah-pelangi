@@ -15,7 +15,7 @@
 			<div class="icon">
 				<i class="fas fa-users"></i>
 			</div>
-			<a href="#" class="small-box-footer">
+			<a href="{{ route('data_yatim') }}" class="small-box-footer">
 			Info Lanjut <i class="fas fa-arrow-circle-right"></i>
 			</a>
 		</div>
@@ -37,7 +37,7 @@
 	<div class="col-lg-6 col-6">
 		<div class="small-box bg-info">
 			<div class="inner">
-				<h3>Rp 15.000.000</h3>
+				<h3>Rp {{ number_format($saldo_donasi, 0, ",",".") }}</h3>
 				<p>Saldo Donasi</p>
 			</div>
 			<div class="icon">

@@ -34,8 +34,7 @@
   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
         
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
 </head>
 <body>
     <div id="app">

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Pemasukan;
+use App\Models\Pengeluaran;
 
 class DashboardController extends Controller
 {
@@ -20,6 +22,7 @@ class DashboardController extends Controller
         $data['sub_db_active'] = "";
         $data['jumlah_data_yatim'] = count(DB::table('data_yatim')->get());
         $data['jumlah_donatur'] = count(DB::table('donatur')->get());
+        $data['saldo_donasi'] = Pemasukan::sum('jumlah_donasi') - Pengeluaran::sum('jumlah_pengeluaran');        
         // $data['hari'] = CarbonInterval::month()->totalDayz;
         // $kk = date("Y",strtotime($pem->tanggal_pemberian_donasi));
         // $tahun = '2000';

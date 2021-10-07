@@ -17,13 +17,15 @@
                                     <label for="inputEmail4" class="form-label">Nama Lengkap</label>
                                     <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama_donatur">
                                 </div>
-                                <div class="col-md-12">
-                                    <label for="inputEmail4" class="form-label">Nomer HP</label>
-                                    <input type="text" class="form-control" placeholder="No KTP" name="no_hp">
-                                </div>
+                        
                                 <div class="col-md-12">
                                     <label for="inputAddress" class="form-label">Alamat</label>
                                     <input type="text" class="form-control" id="inputAddress" placeholder="Kota" name="alamat">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="inputAddress" class="form-label">No. Telepon</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="No. Telepon" name="no_hp">
                                 </div>
                                 
                                 <div class="col-md-12">

@@ -5,9 +5,22 @@
               <div class="card-header">
                 <h3 class="card-title">Tambah Data Yatim</h3>
               </div>
+              <br>
+              <div class="container">
+                            {{-- menampilkan error validasi --}}
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+               </div>            
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" enctype="multipart/form-data" action="{{ route('data_yatimStore')}}">
+              <form method="post" enctype="multipart/form-data" action="{{ route('data_yatimProses')}}">
               	@csrf
                 <div class="card-body">
                   	<div class="form-group">

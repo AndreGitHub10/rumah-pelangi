@@ -17,10 +17,6 @@ class PemasukanSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pemasukan')->insert([
-            'jumlah_donasi' => '1000000',
-            'id_donatur' => '1',
-            'tanggal_pemberian_donasi' => Carbon::parse('2000-01-01')
-        ]);
+       //
     }
 }

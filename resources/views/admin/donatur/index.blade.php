@@ -10,7 +10,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('donaturCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Donatur</a>
+                <a href="{{ route('donaturCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Pemasukan Donatur</a>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -19,25 +19,26 @@
                   </div>
                 </div>
               </div>
-              <!--.card-header -->
+              <!-- /.card-header -->
               <div class="card-body table-responsive p-2">
                 <table id="example" class="table table-hover text-nowrap">
                   <thead>
                     <tr>
+                      <th>ID</th>
                       <th>Nama</th>
                       <th>Alamat</th>
                       <th>No. Telp</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                    <tbody>
                     @foreach($donatur as $dc)
                     <tr>
+                      <td>{{ $loop->iteration }}</td>
                       <td>{{ $dc->nama_donatur }}</td>
                       <td><div class="col-2 text-truncate" style="max-width: 150px;">{{ $dc->alamat }}</div></td>
                       <td>{{ $dc->no_hp}}</td>
                       <td>
-                          
-                          
                           
                         <a href="{{ route('data_donaturEdit', $dc->id_donatur) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
                         <a href="{{ route('data_donaturShow', $dc->id_donatur) }}" class="btn btn-info"><i class="fa fa-folder">&nbsp;</i></a> 

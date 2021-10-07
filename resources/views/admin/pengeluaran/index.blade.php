@@ -10,7 +10,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('pemasukanCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Pemasukan Donatur</a>
+                <a href="{{ route('pengeluaranCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Pengeluaran Donatur</a>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -25,28 +25,33 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Jumlah Donasi</th>
-                      <th>Tanggal Pemberian Donasi</th>
+                      <th>Jumlah Pengeluaran</th>
+                      <th>Tanggal Pengeluaran</th>
+                      <th>Keterangan</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                    <tbody>
-                    @foreach($pemasukan as $dt)
+                    @foreach($pengeluaran as $dt)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $dt->jumlah_donasi }}</td>
-                      <td>{{ $dt->tanggal_pemberian_donasi}}</td>
+                      <td>{{ $dt->jumlah_pengeluaran }}</td>
+                      <td>{{ $dt->tanggal_pengeluaran }}</td>
+                      <td>{{ $dt->keterangan}}</td>
                       <td>
-                        <a href="{{  route('pemasukanEdit', $dt->id) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
-                        <a href="javascript:void(0)" onclick="hapus_pemasukan(`{{$dt->id}}`)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                          
+                        <a href="{{ route('pengeluaranEdit', $dt->id) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
+                        
+                        <a href="javascript:void(0)" onclick="hapus_pengeluaran(`{{$dt->id}}`)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+
+                      </td>
                     </tr>
                      @endforeach
                    
                   </tbody>
-                  
+
                 </table>
                  <br>
-                 
                 </br>
               </div>
               <!-- /.card-body -->
@@ -61,7 +66,7 @@
     $('#example').DataTable();
 } );
 
- function hapus_pemasukan(id) {
+ function hapus_pengeluaran(id) {
       swal({
         title: "Apakah anda Yakin?",
         text: "Ingin Menghapus Data ini" ,
@@ -73,7 +78,7 @@
         dangerMode: true,
       }).then(function(isConfirm) {
         if (isConfirm) {
-          $.post("{{route('pemasukanDestroy')}}", {id:id}).done((data) => {
+          $.post("{{route('pengeluaranDestroy')}}", {id:id}).done((data) => {
             if (data.status == 'success') {
               swal('Berhasil',data.message,'success');
               window.location.reload()
