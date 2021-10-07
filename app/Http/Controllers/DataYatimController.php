@@ -43,16 +43,30 @@ class DataYatimController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new DataYatim;
-        $data->nama_anak = $request->nama_anak;
-        $data->alamat = $request->alamat;
-        $data->tempat_lahir = $request->tempat_lahir;
-        $data->tanggal_lahir = $request->tanggal_lahir;
-        $data->no_hp = $request->no_hp;
+        $rules = array(
+            'nama_anak' => 'required',
+            'alamat' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+        );
+        $messages = array(
+            'required' => 'Kolom harus diisi!',
+        );
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if(!$validator->fails()){
+            $data = new DataYatim;
+            $data->nama_anak = $request->nama_anak;
+            $data->alamat = $request->alamat;
+            $data->tempat_lahir = $request->tempat_lahir;
+            $data->tanggal_lahir = $request->tanggal_lahir;
+            $data->no_hp = $request->no_hp;
 
-        $data->save();
-        return redirect('data_yatim');
-    }
+            $data->save();
+       
+        if ($data) {
+            return redirect('data_yatim')->with('success', 'Data Yatim Berhasil Dimasukkan!');
+        } 
+    }}
 
     /**
      * Display the specified resource.
@@ -103,7 +117,7 @@ class DataYatimController extends Controller
 
         $data->save();
         if ($data) {
-            return redirect('data_yatim');
+            return redirect('data_yatim')->with('success', 'Update Data Berhasil Dirubah!');;
         }
     }
 

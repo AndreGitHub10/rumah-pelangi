@@ -10,7 +10,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="{{ route('data_yatimCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Anak Yatim</a>
+                <a href="{{ route('pemasukanCreate')}}" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Data Pemasukan Donatur</a>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -25,31 +25,25 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Nama</th>
-                      <th>Alamat</th>
-                      <th>Tempat Lahir</th>
-                      <th>Tanggal Lahir</th>
-                      <th>No. Telp</th>
+                      <th>Jumlah Donasi</th>
+                      <th>Tanggal Pemberian Donasi</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                    <tbody>
-                    @foreach($data_yatim as $dt)
+                    @foreach($pemasukan as $dt)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $dt->nama_anak }}</td>
-                      <td><div class="col-2 text-truncate" style="max-width: 150px;">{{ $dt->alamat }}</div></td>
-                      <td>{{ $dt->tempat_lahir}}</td>
-                      <td>{{ $dt->tanggal_lahir}}</td>
-                      <td>{{ $dt->no_hp}}</td>
+                      <td>{{ $dt->jumlah_donasi }}</td>
+                      <td>{{ $dt->tanggal_pemberian_donasi}}</td>
                       <td>
-                        <a href="{{  route('data_yatimEdit', $dt->id) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
-                        <a href="{{ route('data_yatimShow', $dt->id)}}" class="btn btn-info"><i class="fa fa-folder">&nbsp;</i></a> 
-                        <a href="javascript:void(0)" onclick="hapus_yatim(`{{$dt->id}}`)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        <a href="{{  route('pemasukanEdit', $dt->id) }}" class="btn btn-warning"><i class="fa fa-upload">&nbsp;</i></a> 
+                        <a href="javascript:void(0)" onclick="hapus_pemasukan(`{{$dt->id}}`)" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                     </tr>
                      @endforeach
                    
                   </tbody>
+
                 </table>
                  <br>
                 </br>
@@ -66,7 +60,7 @@
     $('#example').DataTable();
 } );
 
- function hapus_yatim(id) {
+ function hapus_pemasukan(id) {
       swal({
         title: "Apakah anda Yakin?",
         text: "Ingin Menghapus Data ini" ,
@@ -78,7 +72,7 @@
         dangerMode: true,
       }).then(function(isConfirm) {
         if (isConfirm) {
-          $.post("{{route('data_yatimDestroy')}}", {id:id}).done((data) => {
+          $.post("{{route('pemasukanDestroy')}}", {id:id}).done((data) => {
             if (data.status == 'success') {
               swal('Berhasil',data.message,'success');
               window.location.reload()

@@ -71,5 +71,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Script Data Tables -->
     @yield('js')
+    @include('sweetalert::alert')
 </body>
 </html>

@@ -40,7 +40,14 @@ Route::prefix('donatur')->group(function(){
 Route::prefix('keuangan')->group(function(){
 	Route::prefix('pemasukan')->group(function(){
 		Route::get('/', [PemasukanController::class, 'index'])->name('pemasukan');
+		Route::get('/create',[PemasukanController::class, 'create'])->name('pemasukanCreate');
+	    Route::post('/store', [PemasukanController::class, 'store'])->name('pemasukanStore');
+	    Route::get('/show/{id}', [PemasukanController::class, 'show'])->name('pemasukanShow');
+	    Route::post('/update', [PemasukanController::class, 'update'])->name('pemasukanUpdate');
+	    Route::post('/destroy', [PemasukanController::class, 'destroy'])->name('pemasukanDestroy');
+	    Route::get('/edit/{id}',  [PemasukanController::class, 'edit'])->name('pemasukanEdit');
 	});
+
 	Route::prefix('pengeluaran')->group(function(){
 		Route::get('/', [PengeluaranController::class, 'index'])->name('pengeluaran');
 	});
